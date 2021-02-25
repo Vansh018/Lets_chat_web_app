@@ -46,7 +46,19 @@ function send(){
       });
 }
 
+function updateLike(message_id)
+{
+      console.log("this is update");
+      console.log("clicked on like button - " + message_id);
+      button_id = message_id;
+      like = document.getElementById(button_id).value;
+      updated_like = Number(like) + 1;
+      console.log(updated_like);
 
+      firebase.database().ref(room_name).child(message_id).update({
+            like : updated_like
+      })
+}
 
 function logout(){
       localStorage.removeItem("user_name");
